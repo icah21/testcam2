@@ -80,7 +80,7 @@ tk.Button(dashboard, text="❌ Exit", font=("Arial", 12), command=close_app, bg=
 counts = {"Criollo": 0, "Forastero": 0, "Trinitario": 0, "Unknown": 0}
 
 # Start webcam
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 

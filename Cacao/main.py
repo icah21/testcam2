@@ -1,7 +1,7 @@
 # main.py
 
 import threading
-from camera import run_app, get_detected_bean
+from camera import get_detected_bean
 from servo import rotate_and_reset, cleanup
 import time
 
