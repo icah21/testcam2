@@ -1,7 +1,7 @@
 # main.py
 import time
-from Cacao.camera import get_detected_type
-from Cacao.servo import ServoController
+from camera import get_detected_type
+from servo import ServoController
 
 
 def main():

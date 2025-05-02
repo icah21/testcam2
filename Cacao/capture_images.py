@@ -6,7 +6,7 @@ class_name = "trinitario"
 save_dir = f"captured_images/{class_name}"
 os.makedirs(save_dir, exist_ok=True)
 
-cap = cv2.VideoCapture(1)
+cap = cv2.VideoCapture(0)
 count = 0
 
 print("Press 's' to save image, 'q' to quit")
