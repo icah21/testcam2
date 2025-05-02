@@ -1,0 +1,16 @@
+train: ../varieties-5/train/images
+val: ../varieties-5/valid/images
+test: ../varieties-5/test/images
+
+nc: 3
+names:
+  - Criollo
+  - Forastero
+  - Trinitario
+
+roboflow:
+  license: CC BY 4.0
+  project: varieties
+  url: https://universe.roboflow.com/cacaotrain/varieties/dataset/5
+  version: 5
+  workspace: cacaotrain
