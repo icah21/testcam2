@@ -1,8 +1,8 @@
 # main.py
 
 import threading
-from Cacao.camera import start_camera, get_detected_type
-from servo import ServoController
+from camera import run_app, get_detected_bean
+from servo import rotate_and_reset, cleanup
 import time
 
 def monitor_and_sort(servo):
