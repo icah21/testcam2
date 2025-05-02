@@ -1,3 +1,4 @@
+# camera.py
 import cv2
 import numpy as np
 from roboflow import Roboflow
@@ -5,7 +6,6 @@ import tkinter as tk
 from PIL import Image, ImageTk
 import threading
 import time
-import os
 
 # Initialize Roboflow
 rf = Roboflow(api_key="f4UBb9Y1BqAaVoiasTC1")
@@ -26,7 +26,7 @@ root = tk.Tk()
 root.title("Cacao Detection Dashboard")
 root.geometry('800x600')
 
-def toggle_fullscreen(event=None):
+def toggle_fullscreen(_event=None):
     state = root.attributes('-fullscreen')
     root.attributes('-fullscreen', not state)
 
@@ -50,8 +50,8 @@ try:
     logo_label = tk.Label(dashboard, image=logo_tk, bg="#2E2E2E")
     logo_label.image = logo_tk
     logo_label.pack(pady=(0, 10))
-except Exception as e:
-    print(f"Logo load failed: {e}")
+except Exception as logo_err:
+    print(f"Logo load failed: {logo_err}")
 
 # Text variables
 criollo_var = tk.StringVar()
@@ -104,14 +104,12 @@ def predict_and_update(frame):
 
     try:
         predictions = model.predict(image_path, confidence=40, overlap=30).json()
-    except Exception as e:
-        print(f"Prediction error: {e}")
+    except Exception as pred_err:
+        print(f"Prediction error: {pred_err}")
         return
 
     for k in counts:
         counts[k] = 0
-
-    detected_type = "Unknown"
 
     for pred in predictions.get("predictions", []):
         x, y, w, h = map(int, [pred['x'], pred['y'], pred['width'], pred['height']])
@@ -148,9 +146,8 @@ def predict_and_update(frame):
     unknown_var.set(f"Unknown: {counts['Unknown']}")
 
     # Highlight most detected type
-    detected_type = max(counts, key=counts.get)
-    detected_type_var.set(f"Detected: {detected_type}")
-    latest_detected_type = detected_type  # <-- Shared state update
+    latest_detected_type = max(counts, key=counts.get)  # <-- Shared state update
+    detected_type_var.set(f"Detected: {latest_detected_type}")
 
 def update_frame():
     global latest_frame
