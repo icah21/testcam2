@@ -1,7 +1,7 @@
 # main.py
 
 import threading
-from camera import start_camera, get_detected_type
+from Cacao.camera import start_camera, get_detected_type
 from servo import ServoController
 import time
 
